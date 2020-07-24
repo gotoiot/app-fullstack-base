@@ -37,8 +37,8 @@ services:
 
     mysql-admin:
         image:                      phpmyadmin/phpmyadmin
-        hostname:                   phpmyadmin
-        container_name:             phpmyadmin
+        hostname:                   mysql-admin
+        container_name:             mysql-admin
         environment: 
             PMA_HOST:               mysql-server
             PMA_PORT:               3306
@@ -48,21 +48,21 @@ services:
         depends_on:
             -                       mysql-server
         ports:
-            -                       "8085:80"
+            -                       "8001:80"
 
-    backend:
+    node-backend:
         image:                      abassi/nodejs-server:10.0-dev
-        hostname:                   webapp
-        container_name:             webapp
+        hostname:                   node-backend
+        container_name:             node-backend
         volumes:
-            -                       .src/back:/home/node/app
+            -                       ./src/back:/home/node/app/src
         networks:
             -                       daw-ceiot-network
         depends_on:
             -                       mysql-server
         ports: 
             -                       "8000:3000"
-        command:                    nodemon ws/index.js
+        command:                    nodemon /home/node/app/src/index.js
 
 networks:
     daw-ceiot-network:

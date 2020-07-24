@@ -25,7 +25,6 @@ connection.connect(function(err) {
         console.error('Error while connect to DB: ' + err.stack);
         return;
     }
-
     console.log('Connected to DB under thread ID: ' + connection.threadId);
 });
 

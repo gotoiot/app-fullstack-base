@@ -88,3 +88,5 @@ typings/
 .dynamodb/
 
 src/front/js/
+
+db/data/
