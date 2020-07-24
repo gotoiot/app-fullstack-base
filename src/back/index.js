@@ -1,8 +1,9 @@
 /*=============================================================================
- * Author: 
- * Date: 
- * Licence:
- * Brief: 
+ * Authors: Agustin Bassi, Brian Ducca, Santiago Germino 
+ * Date: Jul 2020
+ * Licence: MIT
+ * Project: DAW - CEIoT - Project Structure
+ * Brief: Main backend file
 =============================================================================*/
 
 //=======[ Settings, Imports & Data ]==========================================
@@ -11,7 +12,7 @@ var PORT    = 3000;
 
 var express = require('express');
 var app     = express();
-var mysql   = require('./mysql');
+var mysql   = require('./mysql-connector');
 
 // para parsear application/json
 app.use(express.json()); 

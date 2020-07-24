@@ -1,8 +1,9 @@
 /*=============================================================================
- * Author: 
- * Date: 
- * Licence:
- * Brief: 
+ * Authors: Agustin Bassi, Brian Ducca, Santiago Germino 
+ * Date: Jul 2020
+ * Licence: MIT
+ * Project: DAW - CEIoT - Project Structure
+ * Brief: MySQL Connector to DB server at specified settings
 =============================================================================*/
 
 //=======[ Settings, Imports & Data ]==========================================
