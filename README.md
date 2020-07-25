@@ -15,11 +15,17 @@
    <td>GPLV3+</td>
   </tr>
   <tr>
+  <tr>
+   <td><strong>Details</strong></td>
+   <td>Proyecto de base para Desarrollo de Aplicaciones Web</td>
+  </tr>
+  <tr>
+  <tr>
+   <td><strong>Notes</strong></td>
+   <td>Redaccion en UTF-8, puede haber diferencias de lenguaje en algunas palabras</td>
+  </tr>
+  <tr>
 </table>
-
-Este proyecto es la base de Desarrollo de Aplicaciones Web para trabajar a lo largo de las clases.
-
-_Este archivo esta redactado en codificacion UTF-8, en algunas palabras puede haber diferencias de lenguaje._
 
 ## 
 ## Tabla de contenido
@@ -128,7 +134,7 @@ En el archivo `CHANGELOG.md` se debe poner el historial de cambios del proyecto.
 
 La base de datos es MYSQL 5.7. El proposito de utiizar esta base es que no se requieren certificados para acceder a la base de datos, solo usuario y password. Para realizar un cambio de usuario o password se debe realizar una adecuada configuracion en el archivo `docker-compose.yml`.
 
-Al iniciar el servicio DB, desde el archivo `db/dumps/smart_home.sql` se toma la estructura de la base datos, y si esta no existe, la crea automaticamente.
+Al iniciar el servicio `mysql-server`, desde el archivo `db/dumps/smart_home.sql` se toma la estructura de la base datos, y si esta no existe, la crea automaticamente.
 
 ## 
 ## Licencia

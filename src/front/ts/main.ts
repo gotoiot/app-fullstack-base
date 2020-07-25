@@ -1,14 +1,14 @@
 /*=============================================================================
  * Authors: Agustin Bassi, Brian Ducca, Santiago Germino 
  * Date: Jul 2020
- * Licence: MIT
+ * Licence: GPLV3+
  * Project: DAW - CEIoT - Project Structure
  * Brief: Main frontend file (where the logic is)
 =============================================================================*/
 
 //=======[ Settings, Imports & Data ]==========================================
 
-let user = "TypesScript User!";
+let user = "TypesScript Users!";
 
 //=======[ Main module code ]==================================================
 
