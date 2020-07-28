@@ -21,89 +21,107 @@
   </tr>
   <tr>
   <tr>
-   <td><strong>Notes</strong></td>
-   <td>Redaccion en UTF-8, puede haber diferencias de lenguaje en algunas palabras</td>
-  </tr>
-  <tr>
 </table>
 
-## 
-## Tabla de contenido
+## Tabla de contenidos
 
-* [Introduccion](#introduccion)
-* [Instalar dependencias](#instalar-dependencias)
-* [Correr la aplicacion](#correr-la-aplicacion)
-* [Probar la aplicacion](#probar-la-aplicacion)
-* [Compilar de Typescript a Javascript](#compilar-de-typescript-a-javascript)
-* [Detalles de implementacion del proyecto](#detalles-de-implementacion-del-proyecto)
-* [Licencia](#Licencia)
+* [Introducción](#introducción)
+* [Docker y Docker Compose](#docker-y-docker-compose)
+* [Fork del repositorio en GitHub](#fork-del-repositorio-en-github)
+* [Descargar el fork](#probar-la-aplicacion)
+* [Levantar servicios](#compilar-de-typescript-a-javascript)
+* [Prueba de los servicios](#detalles-de-implementacion-del-proyecto)
+* [Compilador de Typescript](#detalles-de-implementacion-del-proyecto)
+* [Organización del proyecto](#detalles-de-implementacion-del-proyecto)
+* [Base de datos](#detalles-de-implementacion-del-proyecto)
+* [Licencia](#licencia)
 
-## 
-## Introduccion
+## Introducción
 
-Este proyecto sirve como base para todas las clases de la asignatura Desarrollo de Aplicaciones Web. En la siguiente figura se puede ver una descripcion general de la arquitectura.
+Este repositorio de GitHub sirve como base para todas las clases del curso **Desarrollo de Aplicaciones Web** de la Carrera de Especialización en IoT de la FI-UBA. 
+
+El trabajo de la cursada se realizará sobre una copia de este repositorio en la cuenta personal de GitHub del alumno. En cada clase, el alumno actualizará su propio repositorio con las prácticas realizadas.
+
+De manera incremental, se comenzará la cursada con un entorno que dispone de las herramientas necesarias y la estructura vacia de una aplicación web. Se irá trabajando clase a clase en diferentes aspectos de dicha aplicación. Al finalizar la cursada, el alumno contará con una aplicación web desarrollada.
+
+En la siguiente figura se observa un diagrama general de las herramientas utilizadas durante el dictado del curso:
 
 ![architecture](doc/architecture.png)
 
-Tal como se explica en la figura anterior, el cliente web se comunica con la aplicacion de NodeJS mediante requests HTTP. En la siguiente figura se puede ver una imagen del cliente funcionando.
+Las herramientas no se instalarán una a una de manera individual, sino que se ofrecen listas para usar. A tal fin se encuentran encapsuladas en contenedores [Docker](https://es.wikipedia.org/wiki/Docker_(software)). La interoperabilidad entre contenedores se logra mediante el uso de la herramienta [Docker Compose](https://docs.docker.com/compose/).
+
+El [navegador o cliente web](https://es.wikipedia.org/wiki/Navegador_web) se comunica con el servicio web ejecutado en un servidor [Node.js](https://es.wikipedia.org/wiki/Node.js) mediante el envío de requests [HTTP](https://es.wikipedia.org/wiki/Protocolo_de_transferencia_de_hipertexto). Una vez establecida la conexión y realizado el intercambio de datos, el navegador presenta la aplicación web (en este ejemplo, un panel de control de domótica para el hogar) como se observa en la siguiente figura:
 
 ![client-running](doc/client-running.png)
 
-## 
-## Instalar dependencias
+A continuación se listan los pasos para obtener el material requerido por la cursada.
 
-La aplicacion requiere de las siguientes dependencias, disponibles en cualquier sistema operativo.
+## Docker y Docker Compose
+Se deberán instalar las herramientas **Docker** y **Docker Compose**. Las mismas son gratuitas y estan disponibles para su instalación en varios sistemas operativos.
 
-* Docker (Pasos de instalacion en la [documentacion oficial](https://docs.docker.com/get-docker/)).
+* Docker (Pasos de instalación en la [documentacion oficial](https://docs.docker.com/get-docker/)).
 * Docker Compose (Pasos de instalacion en la [documentacion oficial](https://docs.docker.com/get-docker/)).
 
-## 
-## Correr la aplicacion
+## Fork del repositorio en GitHub
 
-1. El primer paso es realizar un fork del proyecto. Ir al repositorio y seguir los pasos al presionar el boton "fork" en el margen superior del proyecto. Al momento de realizar el fork ponerle el nombre `daw-project` borrando la palabra `template`.
+Se deberá realizar una [bifurcación o fork](https://es.wikipedia.org/wiki/Bifurcaci%C3%B3n_(desarrollo_de_software)), en la cuenta personal de GitHub de cada alumno, del repositorio del curso. Para esto tomar como base los siguientes pasos:
 
-2. Descargar el repositorio desde la cuenta personal de Github (es decir el proyecto luego de aplicar el fork a cada cuenta).
+1. Entrar a GitHub con la cuenta personal del alumno.
+2. Ir al repositorio oficial del curso en [https://github.com/ernesto-g/daw](https://github.com/ernesto-g/daw) 
+3. En la esquina superior derecha de la pantalla se muestra un botón llamado "Fork". Presionarlo para iniciar el proceso de copia.
+4. GitHub consultará "En donde realizar el fork", responder con un click en la cuenta personal del alumno.
+5. Ponerle el nombre `daw-project` borrando la palabra `template` **(no logré reproducir esto al momento de forkear.. es necesario ir a la configuración de repos propios en GitHub? de ser así, sería bueno indicar los pasos a seguir)**
+
+## Descargar el fork
+
+Para descargar el repositorio desde la cuenta personal del alumno, ejecutar los siguientes comandos en una terminal de linux. Notar que se debe reemplazar la palabra "USUARIO" por el nombre de la cuenta del alumno en GitHub.
 
 ```
 git clone https://github.com/USUARIO/daw-project.git
 cd daw-project/
 ```
 
-3. Esta accion levantara todos los servicios de la aplicacion en una sola accion. Los servicios que se van a desplegar son un compilador de Typescript, un motor de NodeJS 10, una base de datos MySQL 5.7 y el administrador de base de datos PHPMyAdmin. Iniciar la aplicacion con el siguiente comando. 
+## Levantar servicios
+
+Los servicios de las herramientas utilizadas deben iniciarse mediante un comando ejecutado en una terminal de linux y dentro de la carpeta "daw-project". Continuando desde las instrucciones anteriores, el comando es el siguiente:
 
 ```
 docker-compose up
 ```
 
-Para detener la aplicacion presionar `CTRL+C` en la terminal.
+Los servicios que se desplegarán son los siguientes:
 
-## 
-## Probar la aplicacion
+* compilador de Typescript
+* motor Node.js 10
+* base de datos MySQL 5.7
+* administrador de base de datos PHPMyAdmin.
 
-Para probar la aplicacion realizar las siguientes acciones:
+Para detener estos servicios, presionar `CTRL+C` en la terminal desde donde se iniciaron.
 
-* Abrir el navegador en la direccion [http://localhost:8000/](http://localhost:8000/) para visualizar el cliente HTTP. 
-* Abrir el navegador en la direccion [http://localhost:8001/](http://localhost:8001/) para visualizar el administrador PHPMyAdmin.
+## Prueba de los servicios
 
-_Para acceder a la base de datos desde PHPMyAdmin ingresar el usuario y contrasena configurados en el archivo `docker-compose.yml`_
+Para probar el correcto funcionamiento de los servicios básicos sobre los que correrá la futura aplicación web, visitar las siguientes direcciones locales desde un navegador web:
 
-## 
-## Compilar de Typescript a Javascript
+* [http://localhost:8000/](http://localhost:8000/) visualiza la aplicación servida por Node.js. 
+* [http://localhost:8001/](http://localhost:8001/) se accede al administrador de bases de datos PHPMyAdmin.
 
-El servicio de compilacion de Typescript a Javascript se utiliza en la fase de desarrollo del proyecto para ir compilando el codigo a medida que se desarrolla. Cuando el codigo esta listo se puede quitar este servicio del archivo `docker-compose.yml`.
+_Para acceder a la base de datos MySQL desde PHPMyAdmin se deberá ingresar el usuario y contraseña de la misma tal como figuran en el archivo `docker-compose.yml`_
 
-El codigo a compilar se toma de la carpeta `src/front/ts` y el codigo compilado se guarda en `src/front/js` a medida que el codigo typescript (archivos .ts) vayan cambiando. Para compilar el codigo typescript, ejecutar el siguiente comando.
+## Compilador de Typescript
+
+El servicio de compilación de Typescript se utiliza en la fase de desarrollo del proyecto. El objetivo de compilar Typescript es generar código Javascript para ser servido por Node.js.
+
+El codigo Typescript a compilar se toma desde la carpeta `src/front/ts` y el codigo compilado en Javascript se almacena en `src/front/js`. Se deberá compilar toda vez que el código Typescript cambie. De no hacerlo, **Node.js continuará sirviendo una versión anterior**. Para compilar, ejecutar el siguiente comando:
 
 ```
 docker-compose up ts-compiler
 ```
 
-Para detener el compilador presionar `CTRL+C`.
+Presionar `CTRL+C` si se desea detener una compilación en progreso.
 
-## 
-## Detalles de implementacion del proyecto
+## Organización del proyecto
 
-En esta seccion se define como esta armado el proyecto, porque se seleccionaron los nombres y el orden de cada uno. La tabla a continuacion muestra una descripcion del mismo y su explicacion.
+Se decidió utilizar la siguiente estructura de directorios y archivos para alojar los servicios en Docker y el código de la aplicación web. En la siguiente ilustración se observa dicha estructura y la descripción de cada elemento contenido en la misma.
 
 ```sh
 ├── db                          # directorio de la DB
@@ -128,15 +146,16 @@ En esta seccion se define como esta armado el proyecto, porque se seleccionaron 
 ├── LICENSE.md                  # licencia
 ```
 
-En el archivo `CHANGELOG.md` se debe poner el historial de cambios del proyecto.
+En el archivo `CHANGELOG.md` se deberá completar el historial de cambios del proyecto.
 
-### Base de datos
+## Base de datos
 
-La base de datos es MYSQL 5.7. El proposito de utiizar esta base es que no se requieren certificados para acceder a la base de datos, solo usuario y password. Para realizar un cambio de usuario o password se debe realizar una adecuada configuracion en el archivo `docker-compose.yml`.
+El servidor de base de datos es MySQL versión 5.7. Se utiliza esta versión ya que permite un ingreso simple a la base de datos mediante usuario y password. Para realizar un cambio de usuario o de password se debe modificar la configuracion en el archivo `docker-compose.yml`.
 
-Al iniciar el servicio `mysql-server`, desde el archivo `db/dumps/smart_home.sql` se toma la estructura de la base datos, y si esta no existe, la crea automaticamente.
+Toda vez que se levanta el servicio de base de datos, mediante la configuración **(cual?)** se indica que deberán ejecutarse los comandos SQL contenidos en el archivo `db/dumps/smart_home.sql`. Estos comandos crean la estructura de la base de datos de la aplicación web a desarrollar. 
 
-## 
+Se utiliza este mecanismo a fin de iniciar la base de datos por única vez, ya que los comandos SQL allí contenidos no afectan el contenido de una base de datos ya iniciada.
+
 ## Licencia
 
 Este proyecto es publicado bajo licencia GPLV3+.
