@@ -1,0 +1,70 @@
+############################################################################### 
+# Authors:  Agustin Bassi, Brian Ducca, Santiago Germino 
+# Date:     Jul 2020
+# Licence:  MIT
+# Project:  DAW - CEIoT - Project Structure
+# Brief:    Docker compose file to configure whole application
+#
+# How to use the containers
+#   - docker exec -it container_name /bin/sh
+#
+###############################################################################
+
+version: '3'
+
+services:
+
+    ts-compiler:
+        image:                      harmish/typescript
+        hostname:                   ts-compiler
+        container_name:             ts-compiler
+        volumes:
+            -                       ./src/front/ts:/workspace 
+            -                       ./src/front/js:/output 
+        command:                    "tsc --project /workspace --outDir /output --watch --pretty true"
+
+    mysql-server:
+        image:                      mysql:5.7
+        hostname:                   mysql-server
+        container_name:             mysql-server
+        environment:
+            MYSQL_ROOT_PASSWORD:    userpass
+        volumes:
+            -                       ./db/dumps:/docker-entrypoint-initdb.d
+            -                       ./db/data:/var/lib/mysql
+        networks:
+            -                       daw-ceiot-network
+
+    mysql-admin:
+        image:                      phpmyadmin/phpmyadmin
+        hostname:                   mysql-admin
+        container_name:             mysql-admin
+        environment: 
+            PMA_HOST:               mysql-server
+            PMA_PORT:               3306
+            MYSQL_ROOT_PASSWORD:    userpass
+        networks:
+            -                       daw-ceiot-network
+        depends_on:
+            -                       mysql-server
+        ports:
+            -                       "8001:80"
+
+    node-backend:
+        image:                      abassi/nodejs-server:10.0-dev
+        hostname:                   node-backend
+        container_name:             node-backend
+        volumes:
+            -                       ./src/back:/home/node/app/src
+            -                       ./src/front:/home/node/app/static
+        networks:
+            -                       daw-ceiot-network
+        depends_on:
+            -                       mysql-server
+        ports: 
+            -                       "8000:3000"
+        command:                    nodemon /home/node/app/src/index.js
+
+networks:
+    daw-ceiot-network:
+        driver:                     bridge
