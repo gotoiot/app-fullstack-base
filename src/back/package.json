@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Agustin Bassi, Brian Ducca, Santiago Germino",
+  "author": "Agustin Bassi, Brian Ducca, Matias Ramos",
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",

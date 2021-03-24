@@ -1,10 +1,20 @@
 ![header](doc/images/generals/header.png)
 
-# DAW Project Template - Changes Log
+# DAW Base App - Changes Log
 
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
+
+## 2.0.0
+
+* Project modification
+    * Changes project and organization names
+    * Removes Typescript container
+    * Removes Typescript Code
+    * Executes Javascript code directly
+    * Changes licence to MIT
+    * Modifies README accordingly
 
 ## 1.0.0
 
