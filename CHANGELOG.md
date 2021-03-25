@@ -1,5 +1,3 @@
-![header](doc/images/generals/header.png)
-
 # DAW Base App - Changes Log
 
 All notable changes to this project will be documented in this file.
@@ -25,5 +23,3 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
     * PHPMyAdmin.
     * NodeJS backend application.
     * Materialize CSS framework.
-
-![footer](doc/images/generals/footer.png)
