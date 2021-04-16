@@ -1,6 +1,6 @@
 /* MIT License
 
-Copyright (c) 2021 Agustin Bassi, Brian Ducca, Matias Ramos
+Copyright (c) 2021 Agustin Bassi
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -26,7 +26,7 @@ var PORT    = 3000;
 
 var express = require('express');
 var app     = express();
-var mysql   = require('./mysql-connector');
+var Utils   = require('./mysql-connector');
 
 // to parse application/json
 app.use(express.json()); 
