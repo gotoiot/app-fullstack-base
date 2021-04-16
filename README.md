@@ -36,7 +36,7 @@
 * [Instalar dependencias](#instalar-dependencias)
 * [Descargar el código](#descargar-el-código)
 * [Ejecutar la aplicación](#ejecutar-la-aplicación)
-* [Probar la aplicación](#probar-la-aplicación)
+* [Detalles de implementación](#detalles-de-implementación)
 * [Licencia](#licencia)
 
 ## Introducción
@@ -156,23 +156,26 @@ Si pudiste acceder al cliente web y al administrador significa que la aplicació
 
 En esta sección podés ver los detalles específicos de funcionamiento del código y que son los siguientes.
 
+<details><summary><b>Mira los detalles de implementación</b></summary>
+<br>
+
 #### `Agregar un dispositivo`
 
-Completar los pasos para agregar un dispositivo desde el cliente web.
+Completá los pasos para agregar un dispositivo desde el cliente web.
 
 #### `Frontend`
 
-Completar todos los detalles sobre cómo está armado el frontend.
+Completá todos los detalles sobre cómo armaste el frontend, sus interacciones, etc.
 
 #### `Backend`
 
-Completar todos los detalles de funcionamiento sobre el backend, sus interacciones, etc.
+Completá todos los detalles de funcionamiento sobre el backend, sus interacciones con el cliente web, la base de datos, etc.
 
-#### Endpoints
+**Endpoints**
 
-Completar todos los endpoints del servicio con los metodos que recibe y sus respuestas de ejemplo.
+Completá todos los endpoints del backend con los metodos disponibles, los headers y body que recibe, lo que devuelve, ejemplos, etc.
 
-Devolver el estado de los dispositivos.
+1) Devolver el estado de los dispositivos.
 
 ```json
 {
@@ -191,6 +194,8 @@ Devolver el estado de los dispositivos.
     },
 }
 ``` 
+
+</details>
 
 ## Colaborar
 
