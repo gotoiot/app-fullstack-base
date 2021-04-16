@@ -11,7 +11,7 @@ services:
             -                    ./db/dumps:/docker-entrypoint-initdb.d
             -                    ./db/data:/var/lib/mysql
         networks:
-            -                    daw-network
+            -                    app-fullstack-net
 
     mysql-admin:
         image:                   phpmyadmin/phpmyadmin
@@ -20,7 +20,7 @@ services:
             PMA_PORT:            3306
             MYSQL_ROOT_PASSWORD: userpass
         networks:
-            -                    daw-network
+            -                    app-fullstack-net
         depends_on:
             -                    mysql-server
         ports:
@@ -29,10 +29,10 @@ services:
     node-backend:
         image:                   abassi/nodejs-server:10.0-dev
         volumes:
-            -                    ./src/back:/home/node/app/src
-            -                    ./src/front:/home/node/app/static
+            -                    ./src/backend:/home/node/app/src
+            -                    ./src/frontend:/home/node/app/static
         networks:
-            -                    daw-network
+            -                    app-fullstack-net
         depends_on:
             -                    mysql-server
         ports: 
@@ -40,5 +40,5 @@ services:
         command:                 nodemon /home/node/app/src/index.js
 
 networks:
-    daw-network:
+    app-fullstack-net:
         driver:                  bridge
