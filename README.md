@@ -1,49 +1,15 @@
-<p align="center">
-    <a href="https://www.gotoiot.com/">
-        <img src="doc/gotoiot-logo.png" alt="Logo" width="60" height="60">
-    </a>
-    <h2 align="center">Web App Full Stack Base</h2>
-    <p align="center">
-        Una aplicación full stack base para desarrollar proyectos IoT
-        <br>
-        <i>por Agustin Bassi - 2021</i>
-    </p>
-    <p align="center">
-        <a href="https://github.com/gotoiot/app-fullstack-base/graphs/contributors">
-            <img src="https://img.shields.io/github/contributors/gotoiot/app-fullstack-base.svg?style=for-the-badge" alt="Contributors">
-        </a>
-        <a href="https://github.com/gotoiot/app-fullstack-base/network/members">
-            <img src="https://img.shields.io/github/forks/gotoiot/app-fullstack-base.svg?style=for-the-badge" alt="Forks">
-        </a>
-        <a href="https://github.com/gotoiot/app-fullstack-base/stargazers">
-            <img src="https://img.shields.io/github/stars/gotoiot/app-fullstack-base.svg?style=for-the-badge" alt="Stargazers">
-        </a>
-        <a href="https://github.com/gotoiot/app-fullstack-base/issues">
-            <img src="https://img.shields.io/github/issues/gotoiot/app-fullstack-base.svg?style=for-the-badge" alt="Issues">
-        </a>
-        <a href="https://github.com/gotoiot/app-fullstack-base/blob/master/LICENSE.txt">
-            <img src="https://img.shields.io/github/license/gotoiot/app-fullstack-base.svg?style=for-the-badge" alt="Licence">
-        </a>
-    </p>
-</p>
+<a href="https://www.gotoiot.com/">
+    <img src="doc/gotoiot-logo.png" alt="logo" title="Goto IoT" align="right" width="60" height="60" />
+</a>
 
-:star: Nos ayudarías mucho apoyando a este proyecto con una estrella en Github!
+Web App Full Stack Base
+=======================
 
-## Tabla de contenidos
-
-* [Introducción](#introducción)
-* [Detalles principales](#detalles-principales)
-* [Instalar dependencias](#instalar-dependencias)
-* [Descargar el código](#descargar-el-código)
-* [Ejecutar la aplicación](#ejecutar-la-aplicación)
-* [Detalles de implementación](#detalles-de-implementación)
-* [Licencia](#licencia)
-
-## Introducción
+*Ayudaría mucho si apoyaras este proyecto con una ⭐ en Github!*
 
 Este proyecto es una aplicación web fullstack que se ejecuta sobre el ecosistema `Docker`. Está compuesta por un servicio en `NodeJS` que te permite ejecutar código en backend y al mismo tiempo disponibilizar un `cliente web` para interactar con el servicio. Además tiene una `base de datos` MySQL que puede interactuar con el backend para guardar y consultar datos, y de manera adicional trae un `administrador` de base de datos para poder administrar la base en caso que lo necesites.
 
-La aplicación IoT de base que viene con este proyecto se encarga de crear una tabla llamada `Devices` en la base de datos, y la idea es que vos puedas desarrollar el código de backend y frontend que te permita controlar desde el navegador el estado de los devices - *como pueden ser luces, TVs, ventiladores, persiandas, enchufes y otros* - de un hogar inteligente y almacenar los estados en la base de datos. 
+La aplicación IoT de base que viene con este proyecto se encarga de crear una tabla llamada `Devices` en la base de datos, y la idea es que vos puedas desarrollar el código de backend y frontend que te permita controlar desde el navegador el estado de los devices - *como pueden ser luces, TVs, ventiladores, persianas, enchufes y otros* - de un hogar inteligente y almacenar los estados en la base de datos. 
 
 Realizando estas tareas vas a a tener una aplicación fullstack IoT del mundo real que utiliza tecnologías actuales en la que un backend es capaz de interactuar con una DB para cumplir con las peticiones de control que se le mandan desde el cliente web.
 
@@ -51,40 +17,105 @@ En esta imagen podés ver una posible implementación del cliente web que contro
 
 ![architecture](doc/webapp-example-1.png)
 
-## Detalles principales
+## Comenzando 🚀
 
-Conociendo las generalidades del proyecto ya podes ver detalles más específicos.
+Esta sección es una guía con los pasos escenciales para que puedas poner en marcha la aplicación.
 
-<details><summary><b>Mira los detalles del proyecto</b></summary>
+<details><summary><b>Mira los pasos necesarios</b></summary><br>
+
+### Instalar las dependencias
+
+Para correr este proyecto es necesario que instales `Docker` y `Docker Compose`. 
+
+En [este artículo](https://www.gotoiot.com/pages/articles/docker_installation_linux/) publicado en nuestra web están los detalles para instalar Docker y Docker Compose en una máquina Linux. Si querés instalar ambas herramientas en una Raspberry Pi podés seguir [este artículo](https://www.gotoiot.com/pages/articles/rpi_docker_installation) de nuestra web que te muestra todos los pasos necesarios.
+
+En caso que quieras instalar las herramientas en otra plataforma o tengas algún incoveniente, podes leer la documentación oficial de [Docker](https://docs.docker.com/get-docker/) y también la de [Docker Compose](https://docs.docker.com/compose/install/).
+
+Continua con la descarga del código cuando tengas las dependencias instaladas y funcionando.
+
+### Descargar el código
+
+Para descargar el código, lo más conveniente es que realices un `fork` de este proyecto a tu cuenta personal haciendo click en [este link](https://github.com/gotoiot/app-fullstack-base/fork). Una vez que ya tengas el fork a tu cuenta, descargalo con este comando (acordate de poner tu usuario en el link):
+
+```
+git clone https://github.com/USER/app-fullstack-base.git
+```
+
+> En caso que no tengas una cuenta en Github podes clonar directamente este repo.
+
+### Ejecutar la aplicación
+
+Para ejecutar la aplicación tenes que correr el comando `docker-compose up` desde la raíz del proyecto. Este comando va a descargar las imágenes de Docker de node, de la base datos y del admin de la DB, y luego ponerlas en funcionamiento. 
+
+Para acceder al cliente web ingresa a a la URL [http://localhost:8000/](http://localhost:8000/) y para acceder al admin de la DB accedé a [localhost:8001/](http://localhost:8001/). 
+
+Si pudiste acceder al cliente web y al administrador significa que la aplicación se encuentra corriendo bien. 
+
+> Si te aparece un error la primera vez que corres la app, deteńe el proceso y volvé a iniciarla. Es debido a que el backend espera que la base esté creada al iniciar, y en la primera ejecución puede no alcanzar a crearse, a partir de la segunda vez ya se soluciona el problema.
+
+</details>
+
+Continuá explorando el proyecto una vez que lo tengas funcionando.
+
+## Configuraciones de funcionamiento 🔩
+
+Al crearse la aplicación se ejecutan los contenedores de Docker de cada servicio, se crea la base de datos y sus tablas. A continuación podés encontrar info si querés cambiar la estructura de la DB o bien sus configuraciones de acceso.
+
+<details><summary><b>Lee cómo configurar la aplicación</b></summary><br>
+
+### Configuración de la DB
+
+Como ya comprobaste, para acceder PHPMyAdmin tenés que ingresar en la URL [localhost:8001/](http://localhost:8001/). En el login del administrador, el usuario para acceder a la db es `root` y contraseña es la variable `MYSQL_ROOT_PASSWORD` del archivo `docker-compose.yml`.
+
+Para el caso del servicio de NodeJS que se comunica con la DB fijate que en el archivo `src/backend/mysql-connector.js` están los datos de acceso para ingresar a la base.
+
+Si quisieras cambiar la contraseña, puertos, hostname u otras configuraciones de la DB deberías primero modificar el servicio de la DB en el archivo `docker-compose.yml` y luego actualizar las configuraciones para acceder desde PHPMyAdmin y el servicio de NodeJS.
+
+### Estructura de la DB
+
+Al iniciar el servicio de la base de datos, si esta no está creada toma el archivo que se encuentra en `db/dumps/smart_home.sql` para crear la base de datos automáticamente.
+
+En ese archivo está la configuración de la tabla `Devices` y otras configuraciones más. Si quisieras cambiar algunas configuraciones deberías modificar este archivo y crear nuevamente la base de datos para que se tomen en cuenta los cambios.
+
+Tené en cuenta que la base de datos se crea con permisos de superusuario por lo que no podrías borrar el directorio con tu usuario de sistema, para eso debés hacerlo con permisos de administrador. En ese caso podés ejecutar el comando `sudo rm -r db/data` para borrar el directorio completo.
+
+</details>
+
+
+## Detalles principales 🔍
+
+En esta sección vas a encontrar las características más relevantes del proyecto.
+
+<details><summary><b>Mira los detalles más importantes de la aplicación</b></summary><br>
 <br>
 
-#### `Arquitectura de la aplicación`
+### Arquitectura de la aplicación
 
 Como ya pudiste ver, la aplicación se ejecuta sobre el ecosistema Docker, y en esta imagen podés ver el diagrama de arquitectura.
 
 ![architecture](doc/architecture.png)
 
-#### `El cliente web`
+### El cliente web
 
 El cliente web es una Single Page Application que se comunica con el servicio en NodeJS mediante JSON a través de requests HTTP. Puede consultar el estado de dispositivos en la base de datos (por medio del servicio en NodeJS) y también cambiar el estado de los mismos. Los estilos del código están basados en **Material Design**.
 
-#### `El servicio web`
+### El servicio web
 
 El servicio en **NodeJS** posee distintos endpoints para comunicarse con el cliente web mediante requests HTTP enviando **JSON** en cada transacción. Procesando estos requests es capaz de comunicarse con la base de datos para consultar y controlar el estado de los dispositivos, y devolverle una respuesta al cliente web también en formato JSON. Así mismo el servicio es capaz de servir el código del cliente web.
 
-#### `La base de datos`
+### La base de datos
 
 La base de datos se comunica con el servicio de NodeJS y permite almacenar el estado de los dispositivos en la tabla **Devices**. Ejecuta un motor **MySQL versión 5.7** y permite que la comunicación con sus clientes pueda realizarse usando usuario y contraseña en texto plano. En versiones posteriores es necesario brindar claves de acceso, por este motivo la versión 5.7 es bastante utilizada para fases de desarrollo.
 
-#### `El administrador de la DB`
+### El administrador de la DB
 
 Para esta aplicación se usa **PHPMyAdmin**, que es un administrador de base de datos web muy utilizado y que podés utilizar en caso que quieras realizar operaciones con la base, como crear tablas, modificar columnas, hacer consultas y otras cosas más.
 
-#### `Ejecución de servicios`
+### Ejecución de servicios
 
 Los servicios de la aplicación se ejecutan sobre **contenedores de Docker**, así se pueden desplegar de igual manera en diferentes plataformas. Los detalles sobre cómo funcionan los servicios los podés ver directamente en el archivo **docker-compose.yml**.
 
-#### `Organización del proyecto`
+### Organización del proyecto
 
 En la siguiente ilustración podés ver cómo está organizado el proyecto para que tengas en claro qué cosas hay en cada lugar.
 
@@ -115,63 +146,25 @@ En la siguiente ilustración podés ver cómo está organizado el proyecto para 
 
 </details>
 
-## Instalar dependencias
-
-Para correr este proyecto es necesario que instales `Docker` y `Docker Compose`. 
-
-<details><summary><b>Mira las instrucciones de instalación</b></summary>
-<br>
-
-En [este artículo](https://www.gotoiot.com/pages/articles/docker_installation_linux/) publicado en nuestra web están los detalles para instalar Docker y Docker Compose en una máquina Linux. Si querés instalar ambas herramientas en una Raspberry Pi podés seguir [este artículo](https://www.gotoiot.com/pages/articles/rpi_docker_installation) de nuestra web que te muestra todos los pasos necesarios.
-
-En caso que quieras instalar las herramientas en otra plataforma o tengas algún incoveniente, podes leer la documentación oficial de [Docker](https://docs.docker.com/get-docker/) y también la de [Docker Compose](https://docs.docker.com/compose/install/).
-
-Continua con la descarga del código cuando tengas las dependencias instaladas y funcionando.
-
-</details>
-
-## Descargar el código
-
-Para descargar el código, lo más conveniente es que realices un `fork` de este proyecto a tu cuenta personal haciendo click en [este link](https://github.com/gotoiot/app-fullstack-base/fork). Una vez que ya tengas el fork a tu cuenta, descargalo con este comando (acordate de poner tu usuario en el link):
-
-```
-git clone https://github.com/USER/app-fullstack-base.git
-```
-
-Abrí la carpeta del proyecto desde VS Code cuando descargues el código.
-
-> En caso que no tengas una cuenta en Github podes clonar directamente este repo.
-
-## Ejecutar la aplicación
-
-Para ejecutar la aplicación tenes que correr el comando `docker-compose up` desde la raíz del proyecto. Este comando va a descargar las imágenes de Docker de node, de la base datos y del admin de la DB, y luego ponerlas en funcionamiento. 
-
-Para acceder al cliente web ingresa a a la URL [http://localhost:8000/](http://localhost:8000/) y para acceder al admin de la DB accedé a [localhost:8001/](http://localhost:8001/). En el login del administrador, el usuario para acceder a la db es `root` y contraseña es la variable `MYSQL_ROOT_PASSWORD` del archivo `docker-compose.yml`.
-
-Si pudiste acceder al cliente web y al administrador significa que la aplicación se encuentra corriendo bien. Los detalles de funcionamiento específico de la aplicación los podés ver en la siguiente sección.
-
-> Si te aparece un error la primera vez que corres la app, deteńe el proceso y volvé a iniciarla. Es debido a que el backend espera que la base esté creada al iniciar, y en la primera ejecución puede no alcanzar a crearse, a partir de la segunda vez ya se soluciona el problema.
-
-## Detalles de implementación
+## Detalles de implementación 💻
 
 En esta sección podés ver los detalles específicos de funcionamiento del código y que son los siguientes.
 
-<details><summary><b>Mira los detalles de implementación</b></summary>
-<br>
+<details><summary><b>Mira los detalles de implementación</b></summary><br>
 
-#### `Agregar un dispositivo`
+### Agregar un dispositivo
 
 Completá los pasos para agregar un dispositivo desde el cliente web.
 
-#### `Frontend`
+### Frontend
 
 Completá todos los detalles sobre cómo armaste el frontend, sus interacciones, etc.
 
-#### `Backend`
+### Backend
 
 Completá todos los detalles de funcionamiento sobre el backend, sus interacciones con el cliente web, la base de datos, etc.
 
-**Endpoints**
+<details><summary><b>Ver los endpoints disponibles</b></summary><br>
 
 Completá todos los endpoints del backend con los metodos disponibles, los headers y body que recibe, lo que devuelve, ejemplos, etc.
 
@@ -197,26 +190,61 @@ Completá todos los endpoints del backend con los metodos disponibles, los heade
 
 </details>
 
-## Colaborar
+</details>
 
-¿Te gustó el proyecto? Si es así no dudes en apoyarlo con una :star: en Github desde [la home del proyecto](https://github.com/gotoiot/app-fullstack-base), esto motiva mucho a seguir adelante con el desarrollo de código para la comunidad. Si estás interesado en recibir novedades cuando se hagan actualizaciones, podes suscribirte desde [este link](https://github.com/gotoiot/app-fullstack-base/subscription).
 
-Si te gustaría aplicar mejoras a este proyecto podes abrir un hilo de discusión en [este link](https://github.com/gotoiot/app-fullstack-base/issues/new) para conversarlas y luego podrías enviarlas mediante un `pull request`. 
+## Tecnologías utilizadas 🛠️
 
-Finalmente podés compartir este proyecto para que más personas puedan utilizarlo y beneficiarse de esta gran comunidad del software libre.
+En esta sección podés ver las tecnologías más importantes utilizadas.
 
-## Licencia
+<details><summary><b>Mira la lista completa de tecnologías</b></summary><br>
 
-[MIT](https://choosealicense.com/licenses/mit/)
+* [Docker](https://www.docker.com/) - Ecosistema que permite la ejecución de contenedores de software.
+* [Docker Compose](https://docs.docker.com/compose/) - Herramienta que permite administrar múltiples contenedores de Docker.
+* [Node JS](https://nodejs.org/es/) - Motor de ejecución de código JavaScript en backend.
+* [MySQL](https://www.mysql.com/) - Base de datos para consultar y almacenar datos.
+* [PHPMyAdmin](https://www.phpmyadmin.net/) - Administrador web de base de datos.
+* [Material Design](https://material.io/design) - Bibliotecas de estilo responsive para aplicaciones web.
 
-## Acerca de Goto IoT
+</details>
 
-Estos son los links más relevantes para que puedas mantenerte al tanto de novedades y actualizaciones :point_down:
+## Contribuir 🖇️
+
+Si estás interesado en el proyecto y te gustaría sumar fuerzas para que siga creciendo y mejorando, podés abrir un hilo de discusión para charlar tus propuestas en [este link](https://github.com/gotoiot/app-fullstack-base/issues/new). Así mismo podés leer el archivo [Contribuir.md](https://github.com/gotoiot/gotoiot-doc/wiki/Contribuir) de nuestra Wiki donde están bien explicados los pasos para que puedas enviarnos pull requests.
+
+## Sobre Goto IoT 📖
+
+Goto IoT es una plataforma que publica material y proyectos de código abierto bien documentados junto a una comunidad libre que colabora y promueve el conocimiento sobre IoT entre sus miembros. Acá podés ver los links más importantes:
 
 * **[Sitio web](https://www.gotoiot.com/):** Donde se publican los artículos y proyectos sobre IoT. 
-* **[Github de Goto IoT:](https://github.com/gotoiot)** Donde están todos los proyectos para descargar y utilizar. 
-* **[Foro de Goto IoT:](https://groups.google.com/g/gotoiot)** Donde los miembros del grupo realizan consultas técnicas, solucionan problemas y comparten novedades.
-* **[Twitter de Goto IoT:](https://twitter.com/gotoiot)** Donde se publican novedades como nuevos proyectos y artículos, así como también temas relacionados con la materia.
-* **[Wiki de Goto IoT:](https://github.com/gotoiot/doc/wiki)** Donde hay información complementaria de desarrollo que puede ser de utilidad para ampliar el contexto.
+* **[Github de Goto IoT:](https://github.com/gotoiot)** Donde están alojados los proyectos para descargar y utilizar. 
+* **[Comunidad de Goto IoT:](https://groups.google.com/g/gotoiot)** Donde los miembros de la comunidad intercambian información e ideas, realizan consultas, solucionan problemas y comparten novedades.
+* **[Twitter de Goto IoT:](https://twitter.com/gotoiot)** Donde se publican las novedades del sitio y temas relacionados con IoT.
+* **[Wiki de Goto IoT:](https://github.com/gotoiot/doc/wiki)** Donde hay información de desarrollo complementaria para ampliar el contexto.
 
-![footer](doc/gotoiot-footer.png)
+## Muestas de agradecimiento 🎁
+
+Si te gustó este proyecto y quisieras apoyarlo, cualquiera de estas acciones estaría más que bien para nosotros:
+
+* Apoyar este proyecto con una ⭐ en Github para llegar a más personas.
+* Sumarte a [nuestra comunidad](https://groups.google.com/g/gotoiot) abierta y dejar un feedback sobre qué te pareció el proyecto.
+* [Seguirnos en twitter](https://github.com/gotoiot/doc/wiki) y dejar algún comentario o like.
+* Compartir este proyecto con otras personas.
+
+## Autores 👥
+
+Las colaboraciones principales fueron realizadas por:
+
+* **[Agustin Bassi](https://github.com/agustinBassi)**: Ideación, puesta en marcha y mantenimiento del proyecto.
+* **[Ernesto Giggliotti](https://github.com/ernesto-g)**: Creación inicial del frontend, elección de Material Design.
+* **[Brian Ducca](https://github.com/brianducca)**: Ayuda para conectar el backend a la base de datos, puesta a punto de imagen de Docker.
+
+También podés mirar todas las personas que han participado en la [lista completa de contribuyentes](https://github.com/###/contributors).
+
+## Licencia 📄
+
+Este proyecto está bajo Licencia ([MIT](https://choosealicense.com/licenses/mit/)). Podés ver el archivo [LICENSE.md](LICENSE.md) para más detalles sobre el uso de este material.
+
+---
+
+**Copyright © Goto IoT 2021** ⌨️ [**Website**](https://www.gotoiot.com) ⌨️ [**Group**](https://groups.google.com/g/gotoiot) ⌨️ [**Github**](https://www.github.com/gotoiot) ⌨️ [**Twitter**](https://www.twitter.com/gotoiot) ⌨️ [**Wiki**](https://github.com/gotoiot/doc/wiki)
