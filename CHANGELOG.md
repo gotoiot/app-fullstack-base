@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## 2.2.0
+
+* Project modification
+    * Adds TypeScript compiler service to Docker Compose
+    * Reestructures frontend folder for TypeScript
+    * Adds new info to README accordingly
+    * Changes project architecture image
+
 ## 2.1.0
 
 * Project modification

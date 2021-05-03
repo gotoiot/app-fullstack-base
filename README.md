@@ -7,9 +7,9 @@ Web App Full Stack Base
 
 *Ayudaría mucho si apoyaras este proyecto con una ⭐ en Github!*
 
-Este proyecto es una aplicación web fullstack que se ejecuta sobre el ecosistema `Docker`. Está compuesta por un servicio en `NodeJS` que te permite ejecutar código en backend y al mismo tiempo disponibilizar un `cliente web` para interactar con el servicio. Además tiene una `base de datos` MySQL que puede interactuar con el backend para guardar y consultar datos, y de manera adicional trae un `administrador` de base de datos para poder administrar la base en caso que lo necesites.
+Este proyecto es una aplicación web fullstack que se ejecuta sobre el ecosistema `Docker`. Está compuesta por un compilador de `TypeScript` que te permite utilizar este superset de JavaScript para poder programar un `cliente web`. También tiene un servicio en `NodeJS` que te permite ejecutar código en backend y al mismo tiempo disponibilizar el código del cliente web para interactar con el servicio. Además tiene una `base de datos` MySQL que puede interactuar con el backend para guardar y consultar datos, y de manera adicional trae un `administrador` de base de datos para poder administrar la base en caso que lo necesites.
 
-La aplicación IoT de base que viene con este proyecto se encarga de crear una tabla llamada `Devices` en la base de datos, y la idea es que vos puedas desarrollar el código de backend y frontend que te permita controlar desde el navegador el estado de los devices - *como pueden ser luces, TVs, ventiladores, persianas, enchufes y otros* - de un hogar inteligente y almacenar los estados en la base de datos. 
+La aplicación IoT de base que viene con este proyecto se encarga de crear una tabla llamada `Devices` en la base de datos, y la idea es que vos puedas desarrollar el código de backend y frontend que te permita controlar desde el navegador el estado de los devices de un hogar inteligente - *como pueden ser luces, TVs, ventiladores, persianas, enchufes y otros* - y almacenar los estados de cada uno en la base de datos. 
 
 Realizando estas tareas vas a a tener una aplicación fullstack IoT del mundo real que utiliza tecnologías actuales en la que un backend es capaz de interactuar con una DB para cumplir con las peticiones de control que se le mandan desde el cliente web.
 
@@ -45,13 +45,13 @@ git clone https://github.com/USER/app-fullstack-base.git
 
 ### Ejecutar la aplicación
 
-Para ejecutar la aplicación tenes que correr el comando `docker-compose up` desde la raíz del proyecto. Este comando va a descargar las imágenes de Docker de node, de la base datos y del admin de la DB, y luego ponerlas en funcionamiento. 
+Para ejecutar la aplicación tenes que correr el comando `docker-compose up` desde la raíz del proyecto. Este comando va a descargar las imágenes de Docker de node, de typescript, de la base datos y del admin de la DB, y luego ponerlas en funcionamiento. 
 
 Para acceder al cliente web ingresa a a la URL [http://localhost:8000/](http://localhost:8000/) y para acceder al admin de la DB accedé a [localhost:8001/](http://localhost:8001/). 
 
 Si pudiste acceder al cliente web y al administrador significa que la aplicación se encuentra corriendo bien. 
 
-> Si te aparece un error la primera vez que corres la app, deteńe el proceso y volvé a iniciarla. Es debido a que el backend espera que la base esté creada al iniciar, y en la primera ejecución puede no alcanzar a crearse, a partir de la segunda vez ya se soluciona el problema.
+> Si te aparece un error la primera vez que corres la app, deteńe el proceso y volvé a iniciarla. Esto es debido a que el backend espera que la DB esté creada al iniciar, y en la primera ejecución puede no alcanzar a crearse. A partir de la segunda vez el problema queda solucionado.
 
 </details>
 
@@ -111,6 +111,10 @@ La base de datos se comunica con el servicio de NodeJS y permite almacenar el es
 
 Para esta aplicación se usa **PHPMyAdmin**, que es un administrador de base de datos web muy utilizado y que podés utilizar en caso que quieras realizar operaciones con la base, como crear tablas, modificar columnas, hacer consultas y otras cosas más.
 
+### El compilador de TypeScript
+
+**TypeScript** es un lenguaje de programación libre y de código abierto desarrollado y mantenido por Microsoft. Es un superconjunto de JavaScript, que esencialmente añade tipos estáticos y objetos basados en clases. Para esta aplicación se usa un compilador de TypeScript basado en una imagen de [Harmish](https://hub.docker.com/r/harmish) en Dockerhub, y está configurado para monitorear en tiempo real los cambios que se realizan sobre el directorio **src/frontend/ts** y automáticamente generar código compilado a JavaScript en el directorio  **src/frontend/js**. Los mensajes del compilador aparecen automáticamente en la terminal al ejecutar el comando **docker-compose up**.
+
 ### Ejecución de servicios
 
 Los servicios de la aplicación se ejecutan sobre **contenedores de Docker**, así se pueden desplegar de igual manera en diferentes plataformas. Los detalles sobre cómo funcionan los servicios los podés ver directamente en el archivo **docker-compose.yml**.
@@ -132,14 +136,14 @@ En la siguiente ilustración podés ver cómo está organizado el proyecto para 
 │   │   ├── package.json        # configuracion de proyecto NodeJS
 │   │   └── package-lock.json   # configuracion de proyecto NodeJS
 │   └── frontend                # directorio para el frontend de la aplicacion
-│       ├── css                 # donde alojar los estilos de la aplicación
-│       ├── images              # donde se deben cargar las imágenes a mostrar en la app web
-│       ├── js                  # codigo javascript que se va a desarrollar
+│       ├── js                  # codigo javascript que se compila automáticamente
+│       ├── static              # donde alojan archivos de estilos, imagenes, fuentes, etc.
+│       ├── ts                  # donde se encuentra el codigo TypeScript a desarrollar
 │       └── index.html          # archivo principal del cliente HTML
 ├── docker-compose.yml          # archivo donde se aloja la configuracion completa
 ├── README.md                   # este archivo
 ├── CHANGELOG.md                # archivo para guardar los cambios del proyecto
-├── LICENSE.md                  # licencia
+├── LICENSE.md                  # licencia del proyecto
 ```
 
 > No olvides ir poniendo tus cambios en el archivo `CHANGELOG.md` a medida que avanzas en el proyecto.
@@ -205,6 +209,7 @@ En esta sección podés ver las tecnologías más importantes utilizadas.
 * [MySQL](https://www.mysql.com/) - Base de datos para consultar y almacenar datos.
 * [PHPMyAdmin](https://www.phpmyadmin.net/) - Administrador web de base de datos.
 * [Material Design](https://material.io/design) - Bibliotecas de estilo responsive para aplicaciones web.
+* [TypeScript](https://www.typescriptlang.org/) - Superset de JavaScript tipado y con clases.
 
 </details>
 
